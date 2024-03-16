@@ -3,40 +3,41 @@ using namespace std;
 
 int main() {
     const int maxArrayBuku = 100; 
-    string listBuku[maxArrayBuku]; 
-    int jmlBuku; 
+    string daftarBuku[maxArrayBuku]; 
+    int jumlahBuku; 
 
     
     cout << "Masukkan jumlah buku: ";
-    cin >> jmlBuku;
+    cin >> jumlahBuku;
 
-   
+    //  menampilkan judul buku
     cout << "Masukkan dan tampilkan judul buku:" << endl;
-    for (int i = 0; i < jmlBuku; i++) {
+    for (int i = 0; i < jumlahBuku; i++) {
         cout << "Judul buku ke-" << i + 1 << ": ";
-        cin >> listBuku[i];
-        cout << listBuku[i] << endl;
+        cin >> daftarBuku[i];
+        cout << daftarBuku[i] << endl;
     }
 
     // Melakukan selection sort
-    for (int i = 0; i < jmlBuku - 1; i++) {
-        int hurufArray = i; 
-        for (int j = i + 1; j < jmlBuku; j++) {
-            if (listBuku[j] < listBuku[hurufArray]) {
-                hurufArray = j;
+    for (int i = 0; i < jumlahBuku - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < jumlahBuku; j++) {
+            if (daftarBuku[j] < daftarBuku[minIndex]) {
+                minIndex = j;
             }
         }
-     //Penukaran
-        string temp = listBuku[i];
-        listBuku[i] = listBuku[hurufArray]; 
-        listBuku[hurufArray] = temp;
+        // Tukar judul buku pada indeks i dengan judul buku pada indeks minIndex
+        string temp = daftarBuku[i];
+        daftarBuku[i] = daftarBuku[minIndex];
+        daftarBuku[minIndex] = temp;
     }
 
     // Menampilkan daftar buku setelah diurutkan 
     cout << "\nDaftar buku setelah diurutkan:" << endl;
-    for (int i = 0; i < jmlBuku; i++) {
-        cout << listBuku[i] << endl;
+    for (int i = 0; i < jumlahBuku; i++) {
+        cout << daftarBuku[i] << endl;
     }
 
     return 0;
 }
+
